@@ -1,5 +1,4 @@
 var mongoose = require('./mongoose');
-var User = require('../models/user').User;
 var Q = require('q');
 
 Q(open).then(dropDatabase).then(createUsers).then(close);
@@ -13,8 +12,9 @@ function dropDatabase(callback){
 };
 
 function createUsers(callback) {
-	var admin = new User({username: "admin", password: "admin"});
-	var user = new User({username: "user", password: "user"});
+	require('../models/user')
+	var admin = new mongoose.models.User({username: "admin", password: "admin"});
+	var user = new mongoose.models.User({username: "user", password: "user"});
 	
 	Q.all([admin.save(), user.save()]).then(callback);
 };
