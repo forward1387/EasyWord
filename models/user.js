@@ -17,6 +17,12 @@ var schema = new Schema({
 		type: String,
 		required: true
 	},
+	firstname: {
+		type: String
+	},
+	lastname: {
+		type: String
+	},
 	created: {
 		type: Date,
 		default: Date.now

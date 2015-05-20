@@ -4,9 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var connect = require('connect');
 var defRoutes = require('./routes/index');
 var usersRoutes = require('./routes/users');
+var unitsRoutes = require('./routes/units');
 
 var HttpError = require('./error').HttpError;
 
@@ -28,6 +28,7 @@ app.use(require('./middleware/sendHttpError'));
 
 app.use('/', defRoutes);
 app.use('/users', usersRoutes);
+app.use('/units', unitsRoutes);
 
 
 // catch 404 and forward to error handler
