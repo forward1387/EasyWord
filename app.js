@@ -4,9 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var connect = require('connect');
+var defRoutes = require('./routes/index');
+var usersRoutes = require('./routes/users');
 
 var HttpError = require('./error').HttpError;
 
@@ -26,31 +26,37 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./middleware/sendHttpError'));
 
-app.use('/', routes);
-app.use('/users', users);
+app.use('/', defRoutes);
+app.use('/users', usersRoutes);
 
 
 // catch 404 and forward to error handler
-/*app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function(req, res, next) {
+  next(404);
 });
-*/
+
 // error handlers
 
 // development error handler
 // will print stacktrace
 app.use(function(err, req, res, next) {
 	if(typeof err == 'number'){
-		err = new HttpError(err);
+		switch(err) {
+			case 404:
+				err = new HttpError(err, 'Page Not Found!');
+				break;
+			default:
+				err = new HttpError(500, 'Internal Server Error!');
+		}
 	}
 	  
 	if(err instanceof HttpError){
 		res.sendHttpError(err);
 	}else{
 		if (app.get('env') === 'development') {
-			express.errorHandler()(err, req, res, next);
+			//express.errorHandler()(err, req, res, next);
+			err = new HttpError(500);
+			res.sendHttpError(err)
 		}else{
 			console.log(err);
 			err = new HttpError(500);
@@ -58,16 +64,5 @@ app.use(function(err, req, res, next) {
 		}
 	}
 });
-
-// production error handler
-// no stacktraces leaked to user
-/*app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});*/
-
 
 module.exports = app;
