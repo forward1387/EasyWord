@@ -1,9 +1,15 @@
+/**
+ * Module dependencies.
+ */
 var crypto = require('crypto');
 
 var mongoose = require('../db/mongoose'),
-	Schema = mongoose.Schema;
+	Schema = mongoose.Schema,
+	ObjectId = Schema.ObjectId;
+
 
 var schema = new Schema({
+	id: ObjectId,
 	username: {
 		type: String,
 		unique: true,
@@ -24,6 +30,10 @@ var schema = new Schema({
 		type: String
 	},
 	created: {
+		type: Date,
+		default: Date.now
+	},
+	updated: {
 		type: Date,
 		default: Date.now
 	}

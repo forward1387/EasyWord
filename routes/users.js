@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user').User;
 var HttpError = require('../error').HttpError;
+var Q = require('q');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
