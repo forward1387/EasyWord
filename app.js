@@ -16,10 +16,15 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 app.use(require('./middleware/sendHttpError'));
 
-app.use('/api/', defRoutes);
+app.use(express.static(__dirname + '/public'));
+
 app.use('/api/users', usersRoutes);
 app.use('/api/units', unitsRoutes);
 
+
+app.get('*', function(req, res) {
+	res.sendFile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

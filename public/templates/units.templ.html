@@ -1,0 +1,37 @@
+<h4>You are on the {{ title }} page!!!!!</h4>
+
+<form name="addUnitForm" class="simple-form">
+    <div ng-show="message">{{ message }}</div>
+    <div>Title: <input type="text" ng-model="newUnit.title" required/></div>
+    <div>Description: <textarea type="text" ng-model="newUnit.description" /></div>
+    <div>
+        <input type="button" ng-click="reset()" value="Reset" />
+        <input type="submit" ng-click="addUnit(newUnit)" value="Add Unit" />
+    </div>
+</form>
+
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="unit in units">
+        <td>{{ unit._id }}</td>
+        <td>{{ unit.title }}</td>
+        <td>{{ unit.description }}</td>
+        <td> <a href="javascript:void(0)" ng-click="edit(unit)">edit</a> | <a href="javascript:void(0)" ng-click="delete(unit)">delete</a>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<pre>Units = {{units | json}}</pre>
+<pre>newUnit = {{newUnit | json}}</pre>
+
+

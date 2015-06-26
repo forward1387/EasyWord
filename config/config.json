@@ -1,5 +1,5 @@
 {
-	"port":3000,
+	"port":8080,
 	"mongoose": {
 		"uri": "mongodb://%s:%s@ds039301.mongolab.com:39301/easyworddb",
 		"dbname": "admin",
