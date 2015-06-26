@@ -12,15 +12,12 @@
     "cookie-parser": "latest",
     "crypto": "latest",
     "debug": "latest",
-    "ejs": "latest",
-    "ejs-mate": "latest",
     "errorhandler": "latest",
     "express": "latest",
     "mongoose": "latest",
     "morgan": "latest",
     "nconf": "latest",
     "q": "latest",
-    "serve-favicon": "latest",
     "winston": "latest"
   },
   "repository": {

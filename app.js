@@ -1,9 +1,5 @@
 var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var defRoutes = require('./routes/index');
 var usersRoutes = require('./routes/users');
 var unitsRoutes = require('./routes/units');
@@ -12,18 +8,8 @@ var HttpError = require('./error').HttpError;
 
 var app = express();
 
-// view engine setup
-app.engine('ejs', require('ejs-mate'));
-app.set('views', __dirname + '/templates');
-app.set('view engine', 'ejs');
-
 // uncomment after placing your favicon in /public
-app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./middleware/sendHttpError'));
 
 app.use('/', defRoutes);
