@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.post('/add', function(req, res, next){
+router.post('/', function(req, res, next){
     var newUnit = new Unit(req.body);
 
     newUnit.save(function(err, unt){
