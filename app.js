@@ -3,18 +3,22 @@ var logger = require('morgan');
 var defRoutes = require('./routes/index');
 var usersRoutes = require('./routes/users');
 var unitsRoutes = require('./routes/units');
-
+var bodyParser = require('body-parser')
 var HttpError = require('./error').HttpError;
 
 var app = express();
 
 // uncomment after placing your favicon in /public
 app.use(logger('dev'));
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+	extended: true
+}));
 app.use(require('./middleware/sendHttpError'));
 
-app.use('/', defRoutes);
-app.use('/users', usersRoutes);
-app.use('/units', unitsRoutes);
+app.use('/api/', defRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/units', unitsRoutes);
 
 
 // catch 404 and forward to error handler
