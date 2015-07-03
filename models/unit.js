@@ -6,7 +6,6 @@ var mongoose = require('../db/mongoose'),
     ObjectId = Schema.ObjectId;
 
 var schema = new Schema({
-    id          : ObjectId,
     title       : {
         type: String,
         required: true

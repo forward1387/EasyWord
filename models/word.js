@@ -13,6 +13,21 @@ var schema = new Schema({
         trim: true,
         lowercase: true
     },
+    transcription: {
+        type: String
+    },
+    translations: {
+        type: Array,
+        required: true
+    },
+    speechPart: {
+        type: Number,
+        min: 0,
+        max: 11
+    },
+    img: {
+        type: String
+    },
     created: {
         type: Date,
         default: Date.now

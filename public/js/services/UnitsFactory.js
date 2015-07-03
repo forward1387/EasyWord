@@ -8,7 +8,7 @@ angular.module('EasyWordApp')
         };
 
         dataFactory.get = function(id) {
-            return $http.get(url + '/' + id);
+            return $http.get(url + id);
         };
 
         dataFactory.add = function(unit) {
@@ -16,11 +16,11 @@ angular.module('EasyWordApp')
         };
 
         dataFactory.delete = function(unit) {
-            return $http.delete(url + '/' + unit.id);
+            return $http.delete(url + unit._id);
         };
 
         dataFactory.update = function(unit) {
-            return $http.put(url + '/' + unit.id, unit);
+            return $http.put(url + unit._id, unit);
         };
 
         return dataFactory;

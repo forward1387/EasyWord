@@ -1,1 +1,30 @@
 <h4>You are on the {{ title }} page!!!!!</h4>
+
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Original</th>
+        <th>Transcription</th>
+        <th>Speech Part</th>
+        <th>Translation</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="word in words | orderBy:'name'">
+        <td>{{ word._id }}</td>
+        <td>{{ word.name }}</td>
+        <td>{{ word.transcription }}</td>
+        <td>{{ word.speechPart }}</td>
+        <td>
+            <ul ng-repeat="trans in word.translations">
+                <li>{{trans}}</li>
+            </ul>
+        </td>
+        <td> <a href="javascript:void(0)" ng-click="getUnit(unit)">edit</a> | <a href="javascript:void(0)" ng-click="deleteUnit(unit)">delete</a>
+
+        </td>
+    </tr>
+    </tbody>
+</table>

@@ -5,7 +5,6 @@ angular.module('EasyWordApp').controller('UnitsController', ['$scope', 'UnitsDat
 
     function getInitData() {
         UnitsDataFactory.list().success(function(response) {
-            console.log(response);
             $scope.units = response;
         });
     }
@@ -17,10 +16,29 @@ angular.module('EasyWordApp').controller('UnitsController', ['$scope', 'UnitsDat
     $scope.newUnit = {};
 
     $scope.addUnit = function(unit) {
-        $scope.message = 'Thanks, ' + unit.title + ', we added you!';
+        UnitsDataFactory.add(unit).success(function(response) {
+            $scope.message = 'You have successfully added an Unit{id: "'+ response._id +'", title: "' + response.title + '"}!';
+            $scope.units.push(response);
+        });
     };
 
     $scope.reset = function() {
         $scope.newUnit = {};
+    };
+
+    $scope.deleteUnit = function(unit) {
+        if (confirm('Are you sure you want to delete Unit{id: ' + unit._id + '} from the database?')) {
+            UnitsDataFactory.delete(unit).success(function (response) {
+                $scope.newUnit = {};
+                $scope.units.shift(unit);
+            });
+        }
+    };
+
+    $scope.getUnit = function(unit) {
+        UnitsDataFactory.get(unit._id).success(function(response) {
+            console.log(response);
+            $scope.newUnit = response;
+        });
     };
 }]);

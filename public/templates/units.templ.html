@@ -20,18 +20,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="unit in units">
+    <tr ng-repeat="unit in units | orderBy:'title'">
         <td>{{ unit._id }}</td>
         <td>{{ unit.title }}</td>
         <td>{{ unit.description }}</td>
-        <td> <a href="javascript:void(0)" ng-click="edit(unit)">edit</a> | <a href="javascript:void(0)" ng-click="delete(unit)">delete</a>
+        <td> <a href="javascript:void(0)" ng-click="getUnit(unit)">edit</a> | <a href="javascript:void(0)" ng-click="deleteUnit(unit)">delete</a>
 
         </td>
     </tr>
     </tbody>
 </table>
-
-<pre>Units = {{units | json}}</pre>
-<pre>newUnit = {{newUnit | json}}</pre>
 
 

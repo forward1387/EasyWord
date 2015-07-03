@@ -3,6 +3,7 @@ var logger = require('morgan');
 var defRoutes = require('./routes/index');
 var usersRoutes = require('./routes/users');
 var unitsRoutes = require('./routes/units');
+var wordsRoutes = require('./routes/words');
 var bodyParser = require('body-parser')
 var HttpError = require('./error').HttpError;
 
@@ -20,6 +21,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/api/users', usersRoutes);
 app.use('/api/units', unitsRoutes);
+app.use('/api/words', wordsRoutes);
 
 
 app.get('*', function(req, res) {
