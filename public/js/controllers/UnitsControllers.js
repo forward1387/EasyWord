@@ -19,6 +19,7 @@ angular.module('EasyWordApp').controller('UnitsController', ['$scope', 'UnitsDat
         UnitsDataFactory.add(unit).success(function(response) {
             $scope.message = 'You have successfully added an Unit{id: "'+ response._id +'", title: "' + response.title + '"}!';
             $scope.units.push(response);
+            $scope.newUnit = {};
         });
     };
 

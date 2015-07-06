@@ -36,8 +36,17 @@ router.post('/', function(req, res, next){
     });
 });
 
-router.put('/', function(req, res, next){
+router.put('/:id', function(req, res, next){
+    var id = req.params.id;
 
+    Unit.findByIdAndUpdate(id, req.body, function(err, unt){
+        if(err) {
+            next(new HttpError(400, err.message));
+        }
+        else {
+            res.json(unt);
+        }
+    });
 });
 
 router.delete('/:id', function(req, res, next){
