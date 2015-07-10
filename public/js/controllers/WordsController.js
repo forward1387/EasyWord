@@ -1,4 +1,4 @@
-angular.module('EasyWordApp').controller('WordsController', ['$scope', 'WordsDataFactory', function($scope, WordsDataFactory){
+angular.module('easyWordApp').controller('WordsController', ['$scope', 'WordsDataFactory', function($scope, WordsDataFactory){
     $scope.title = "Words";
 
     $scope.words = [];
@@ -9,8 +9,9 @@ angular.module('EasyWordApp').controller('WordsController', ['$scope', 'WordsDat
             $scope.words = response;
         });
     }
-
     getInitData();
 
-
+    $scope.addTranslation = function(){
+        $scope.newWord.translations.push('');
+    };
 }]);

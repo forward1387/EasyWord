@@ -1,4 +1,4 @@
-angular.module('EasyWordApp')
+angular.module('easyWordApp')
     .factory('UnitsDataFactory', ['$http', function($http){
         var dataFactory = {};
         var url = '/api/units/';

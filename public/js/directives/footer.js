@@ -1,4 +1,4 @@
-angular.module('EasyWordApp')
+angular.module('easyWordApp')
     .directive('footer', function() {
     return {
         restrict: 'E',

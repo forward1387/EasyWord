@@ -1,11 +1,11 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('EasyWordApp', [
+angular.module('easyWordApp', [
   'ngRoute'
 ]);
 
-angular.module('EasyWordApp').config(['$routeProvider', function($routeProvider){
+angular.module('easyWordApp').config(['$routeProvider', function($routeProvider){
   $routeProvider.
       when('/home', {
         templateUrl: 'templates/home.templ.html',

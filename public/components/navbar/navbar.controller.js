@@ -1,5 +1,5 @@
-angular.module('EasyWordApp')
-    .controller('NavbarCtrl', ['$scope', '$location' , function ($scope, $location) {
+angular.module('easyWordApp')
+    .controller('NavbarController', ['$scope', '$location' , function ($scope, $location) {
         $scope.menu = [{
                 'title': 'Home',
                 'link': '/home'

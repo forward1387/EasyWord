@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="easyWordApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="easyWordApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="easyWordApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="easyWordApp" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
   <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="vendor/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-app="EasyWordApp">
+<body>
   <div id="MainContainerCtrl" ng-controller="MainController" >
     <div ng-include="'components/navbar/navbar.templ.html'"></div>
 
@@ -42,10 +42,10 @@
   <script src="core.js"></script>
 
   <!-- Controllers -->
-  <script src="js/controllers/MainControllers.js"></script>
-  <script src="js/controllers/HomeControllers.js"></script>
-  <script src="js/controllers/WordsControllers.js"></script>
-  <script src="js/controllers/UnitsControllers.js"></script>
+  <script src="js/controllers/MainController.js"></script>
+  <script src="js/controllers/HomeController.js"></script>
+  <script src="js/controllers/WordsController.js"></script>
+  <script src="js/controllers/UnitsController.js"></script>
   <script src="components/navbar/navbar.controller.js"></script>
 
   <!-- Directives -->

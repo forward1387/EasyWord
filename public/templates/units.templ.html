@@ -1,5 +1,8 @@
 <form class="form-horizontal" name="addUnitForm" class="simple-form" role="form">
-    <div ng-show="message">{{ message }}</div>
+    <div class="form-group">
+        <h3 class="col-sm-4" ng-show="edit">Create New User:</h3>
+        <h3 class="col-sm-4" ng-hide="edit">Edit User:</h3>
+    </div>
 
     <div class="form-group">
         <label for="inputTitle" class="col-sm-2 control-label">Title:</label>
@@ -23,6 +26,8 @@
     </div>
 </form>
 
+<hr>
+
 <table class="table table-striped table-bordered">
     <thead>
     <tr>
@@ -37,7 +42,11 @@
         <td>{{ unit._id }}</td>
         <td>{{ unit.title }}</td>
         <td>{{ unit.description }}</td>
-        <td> <a href="javascript:void(0)" ng-click="getUnit(unit)">edit</a> | <a href="javascript:void(0)" ng-click="deleteUnit(unit)">delete</a>
+        <td>
+            <button class="btn" ng-click="getUnit(unit)">
+                <span class="glyphicon glyphicon-pencil"></span>  Edit
+            </button>
+            | <a href="javascript:void(0)" ng-click="deleteUnit(unit)">delete</a>
 
         </td>
     </tr>

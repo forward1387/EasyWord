@@ -1,4 +1,4 @@
-angular.module('EasyWordApp').controller('UnitsController', ['$scope', 'UnitsDataFactory', function($scope, UnitsDataFactory){
+angular.module('easyWordApp').controller('UnitsController', ['$scope', 'UnitsDataFactory', function($scope, UnitsDataFactory){
     $scope.title = "Units";
 
     $scope.units = [];
