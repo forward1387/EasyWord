@@ -1,6 +1,6 @@
 angular.module('easyWordApp').controller('UnitsController', ['$scope', 'UnitsDataFactory', function($scope, UnitsDataFactory){
     $scope.title = "Units";
-
+    $scope.edit = true;
     $scope.units = [];
 
     function getInitData() {
@@ -15,15 +15,21 @@ angular.module('easyWordApp').controller('UnitsController', ['$scope', 'UnitsDat
     $scope.latestId = 2;
     $scope.newUnit = {};
 
-    $scope.addUnit = function(unit) {
-        UnitsDataFactory.add(unit).success(function(response) {
-            $scope.message = 'You have successfully added an Unit{id: "'+ response._id +'", title: "' + response.title + '"}!';
-            $scope.units.push(response);
-            $scope.newUnit = {};
-        });
+    $scope.editUnit = function(unit) {
+        if(unit._id) {
+            $scope.edit = false;
+            $scope.newUnit = unit;
+        } else {
+            UnitsDataFactory.add(unit).success(function (response) {
+                $scope.message = 'You have successfully added an Unit{id: "' + response._id + '", title: "' + response.title + '"}!';
+                $scope.units.push(response);
+                $scope.newUnit = {};
+            });
+        }
     };
 
     $scope.reset = function() {
+        $scope.edit = true;
         $scope.newUnit = {};
     };
 
@@ -34,12 +40,5 @@ angular.module('easyWordApp').controller('UnitsController', ['$scope', 'UnitsDat
                 $scope.units.shift(unit);
             });
         }
-    };
-
-    $scope.getUnit = function(unit) {
-        UnitsDataFactory.get(unit._id).success(function(response) {
-            console.log(response);
-            $scope.newUnit = response;
-        });
     };
 }]);
