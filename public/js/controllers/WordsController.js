@@ -2,7 +2,7 @@ angular.module('easyWordApp').controller('WordsController', ['$scope', 'WordsDat
     $scope.title = "Words";
 
     $scope.words = [];
-    $scope.newWord = {translations: ['']};
+    $scope.newWord = {translations: ['', '', '', '', '']};
 
     function getInitData() {
         WordsDataFactory.list().success(function(response){
@@ -11,7 +11,11 @@ angular.module('easyWordApp').controller('WordsController', ['$scope', 'WordsDat
     }
     getInitData();
 
-    $scope.addTranslation = function(){
-        $scope.newWord.translations.push('');
+    $scope.editTranslation = function(last, index){
+        if(last) {
+            $scope.newWord.translations.push('');
+        }else {
+            $scope.newWord.translations.splice(index, 1);
+        }
     };
 }]);
