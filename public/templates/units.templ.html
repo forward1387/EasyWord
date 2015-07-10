@@ -1,46 +1,64 @@
-<div class="container">
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <table>
+            <tr>
+                <td>
+                    <h4>Units:</h4>
+                </td>
+                <td align="right">
+                    <div class="pull-right">
+                        <button class="btn btn-success btn-add" ng-click="reset()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-    <h3>Units</h3>
+    <!-- Table -->
     <table class="table table-striped table-bordered">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Action</th>
-            </tr>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Edit/Delete</th>
+        </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="unit in units | orderBy:'title'">
-                <td>{{ unit._id }}</td>
-                <td>{{ unit.title }}</td>
-                <td>{{ unit.description }}</td>
-                <td>
-                    <button class="btn" ng-click="editUnit(unit)">
-                        <span class="glyphicon glyphicon-pencil"></span>  Edit
+        <tr ng-repeat="unit in units| orderBy:'title'">
+            <td>{{ unit._id }}</td>
+            <td>{{ unit.title }}</td>
+            <td>{{ unit.description }}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="...">
+                    <button class="btn btn-default" ng-click="editUnit(unit)">
+                        <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    |
-                    <button class="btn" ng-click="editUnit(unit)">
-                        <span class="glyphicon glyphicon-remove" ng-click="deleteUnit(unit)"></span>  Delete
+
+                    <button class="btn btn-default" ng-click="deleteUnit(unit, $index)">
+                        <span class="glyphicon glyphicon-remove"></span>
                     </button>
-                 </td>
-            </tr>
+                </div>
+            </td>
+        </tr>
         </tbody>
     </table>
+</div>
 
-    <hr>
-    <button class="btn btn-success" ng-click="reset()">
-        <span class="glyphicon"></span>  Create New Unit
-    </button>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading" ng-show="edit">
+        <h4>Create New Unit:</h4>
+    </div>
+    <div class="panel-heading" ng-hide="edit">
+        <h4>Edit Unit:</h4>
+    </div>
 
-    <hr>
     <form class="form-horizontal" name="addUnitForm" class="simple-form" role="form">
         <fieldset>
-
-            <!-- Form Name -->
-            <legend ng-show="edit">Create New Unit:</legend>
-            <legend ng-hide="edit">Edit Unit:</legend>
-
             <div class="form-group">
                 <label for="inputTitle" class="col-sm-2 control-label">Title:</label>
                 <div class="col-sm-4">
@@ -66,5 +84,4 @@
         </fieldset>
     </form>
 </div>
-
 

@@ -8,7 +8,8 @@ var mongoose = require('../db/mongoose'),
 var schema = new Schema({
     title       : {
         type: String,
-        required: true
+        required: true,
+        unique : true
     },
     description: {
         type: String
