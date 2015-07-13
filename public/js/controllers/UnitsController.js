@@ -14,6 +14,8 @@ angular.module('easyWordApp').controller('UnitsController', ['$scope', 'UnitsDat
     $scope.message = '';
     $scope.newUnit = {};
 
+    $scope.checked = false;
+
     $scope.editUnit = function(unit) {
         if(unit._id) {
             $scope.edit = false;
@@ -33,15 +35,15 @@ angular.module('easyWordApp').controller('UnitsController', ['$scope', 'UnitsDat
     $scope.reset = function() {
         $scope.edit = true;
         $scope.newUnit = {};
+        $scope.checked = true;
     };
 
-    $scope.deleteUnit = function(unit, index) {
+    $scope.deleteUnit = function(unit) {
         if (confirm('Are you sure you want to delete Unit{id: ' + unit._id + '} from the database?')) {
-            $scope.units.splice(index, 1);
             console.log($scope.units);
             UnitsDataFactory.delete(unit).success(function (response) {
                 $scope.newUnit = {};
-                console.log(index);
+                $scope.units.splice($scope.units.indexOf(unit), 1);
             });
         }
     };

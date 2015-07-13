@@ -1,3 +1,40 @@
+<div class="panel panel-default animate-show" ng-show="checked">
+    <!-- Default panel contents -->
+    <div class="panel-heading" ng-show="edit">
+        <h4>Create New Unit:</h4>
+    </div>
+    <div class="panel-heading" ng-hide="edit">
+        <h4>Edit Unit:</h4>
+    </div>
+
+    <form class="form-horizontal" name="addUnitForm" class="simple-form" role="form">
+        <fieldset>
+            <div class="form-group">
+                <label for="inputTitle" class="col-sm-2 control-label">Title:</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="inputTitle" placeholder="Title" ng-model="newUnit.title" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputDescription" class="col-sm-2 control-label">Description:</label>
+                <div class="col-sm-4">
+                    <textarea type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="newUnit.description" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input class="btn btn-default" type="button" ng-click="reset()" value="Reset" />
+                    <button class="btn btn-success" ng-click="editUnit(newUnit)" ng-disabled="error || incomplete">
+                        <span class="glyphicon glyphicon-save"></span> {{edit?'Create New':'Save Changes'}}
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
 <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">
@@ -38,7 +75,7 @@
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
 
-                    <button class="btn btn-default" ng-click="deleteUnit(unit, $index)">
+                    <button class="btn btn-default" ng-click="deleteUnit(unit)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </div>
@@ -46,42 +83,5 @@
         </tr>
         </tbody>
     </table>
-</div>
-
-<div class="panel panel-default">
-    <!-- Default panel contents -->
-    <div class="panel-heading" ng-show="edit">
-        <h4>Create New Unit:</h4>
-    </div>
-    <div class="panel-heading" ng-hide="edit">
-        <h4>Edit Unit:</h4>
-    </div>
-
-    <form class="form-horizontal" name="addUnitForm" class="simple-form" role="form">
-        <fieldset>
-            <div class="form-group">
-                <label for="inputTitle" class="col-sm-2 control-label">Title:</label>
-                <div class="col-sm-4">
-                    <input class="form-control" id="inputTitle" placeholder="Title" ng-model="newUnit.title" required />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="inputDescription" class="col-sm-2 control-label">Description:</label>
-                <div class="col-sm-4">
-                    <textarea type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="newUnit.description" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <input class="btn btn-default" type="button" ng-click="reset()" value="Reset" />
-                    <button class="btn btn-success" ng-click="editUnit(newUnit)" ng-disabled="error || incomplete">
-                        <span class="glyphicon glyphicon-save"></span> {{edit?'Create New':'Save Changes'}}
-                    </button>
-                </div>
-            </div>
-        </fieldset>
-    </form>
 </div>
 

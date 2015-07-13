@@ -1,52 +1,56 @@
-<h4>You are on the {{ title }} page!!!!!</h4>
+<div class="panel panel-default animate-show" ng-show="checked">
 
-<form class="form-horizontal">
-    <fieldset>
+    <div class="panel-heading" ng-show="edit">
+        <h4>Create New Word:</h4>
+    </div>
+    <div class="panel-heading" ng-hide="edit">
+        <h4>Edit Word:</h4>
+    </div>
 
-        <!-- Form Name -->
-        <legend ng-show="edit">Create New Word</legend>
-        <legend ng-hide="edit">Edit Word</legend>
+    <form class="form-horizontal animate-show">
+        <fieldset>
 
-        <div class="form-group">
-            <label for="inputOrigin" class="col-sm-2 control-label">Original:</label>
-            <div class="col-sm-4">
-                <input class="form-control" id="inputOrigin" placeholder="Original" ng-model="newWord.name" />
+            <div class="form-group">
+                <label for="inputOrigin" class="col-sm-2 control-label">Original:</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="inputOrigin" placeholder="Original" ng-model="newWord.name" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputTranscription" class="col-sm-2 control-label">Transcription:</label>
-            <div class="col-sm-4">
-                <input class="form-control" id="inputTranscription" placeholder="Transcription" ng-model="newWord.transcription" />
+
+            <div class="form-group">
+                <label for="inputTranscription" class="col-sm-2 control-label">Transcription:</label>
+                <div class="col-sm-4">
+                    <input class="form-control" id="inputTranscription" placeholder="Transcription" ng-model="newWord.transcription" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="selectSpeechPart" class="col-sm-2 control-label">Parts of Speech:</label>
-            <div class="col-sm-4">
-                <select class="form-control" id="selectSpeechPart" ng-model="newWord.speechPart" convert-to-number>
-                    <option value="0">Verb</option>
-                    <option value="1">Noun</option>
-                    <option value="2">Adjective</option>
-                    <option value="3">Adverb</option>
-                    <option value="4">Pronoun</option>
-                    <option value="5">Preposition</option>
-                    <option value="6">Conjunction</option>
-                    <option value="7">Interjection</option>
-                </select>
+            <div class="form-group">
+                <label for="selectSpeechPart" class="col-sm-2 control-label">Parts of Speech:</label>
+                <div class="col-sm-4">
+                    <select class="form-control" id="selectSpeechPart" ng-model="newWord.speechPart" convert-to-number>
+                        <option value="0">Verb</option>
+                        <option value="1">Noun</option>
+                        <option value="2">Adjective</option>
+                        <option value="3">Adverb</option>
+                        <option value="4">Pronoun</option>
+                        <option value="5">Preposition</option>
+                        <option value="6">Conjunction</option>
+                        <option value="7">Interjection</option>
+                    </select>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group" ng-repeat="transl in newWord.translations track by $index">
-            <label class="col-sm-2 control-label">Translation {{$index + 1}}:</label>
-            <div class="controls col-sm-4">
-                <form role="form" autocomplete="off">
-                    <div class="entry input-group">
-                        <input class="form-control" placeholder="Translation" ng-model="transl">
+            <div class="form-group" ng-repeat="transl in newWord.translations track by $index">
+                <label class="col-sm-2 control-label">Translation {{$index + 1}}:</label>
+                <div class="controls col-sm-4">
+                    <form role="form" autocomplete="off">
+                        <div class="entry input-group">
+                            <input class="form-control" placeholder="Translation" ng-model="transl">
 
-                        <span class="input-group-btn">
-                            <button class="btn" ng-class="!$last ? 'btn-danger btn-remove' : 'btn-success btn-add'" type="button" ng-click="editTranslation($last, $index)">
-                                <span class="glyphicon" ng-class="!$last ? 'glyphicon-minus' : 'glyphicon-plus'"></span>
-                            </button>
+                            <span class="input-group-btn">
+                                <button class="btn" ng-class="!$last ? 'btn-danger btn-remove' : 'btn-success btn-add'" type="button" ng-click="editTranslation($last, $index)">
+                                    <span class="glyphicon" ng-class="!$last ? 'glyphicon-minus' : 'glyphicon-plus'"></span>
+                                </button>
                         </span>
                     </div>
                 </form>
@@ -68,33 +72,55 @@
         </div>
     </fieldset>
 
-</form>
+    </form>
+</div>
 
-<table class="table table-striped table-bordered">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Original</th>
-        <th>Transcription</th>
-        <th>Parts of Speech</th>
-        <th>Translations</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="word in words | orderBy:'name'">
-        <td>{{ word._id }}</td>
-        <td>{{ word.name }}</td>
-        <td>{{ word.transcription }}</td>
-        <td>{{ word.speechPart }}</td>
-        <td>
-            <ul ng-repeat="trans in word.translations">
-                <li>{{trans}}</li>
-            </ul>
-        </td>
-        <td> <a href="javascript:void(0)" ng-click="getUnit(unit)">edit</a> | <a href="javascript:void(0)" ng-click="deleteUnit(unit)">delete</a>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <table>
+            <tr>
+                <td>
+                    <h4>Words:</h4>
+                </td>
+                <td align="right">
+                    <div class="pull-right">
+                        <button class="btn btn-success btn-add" ng-click="reset()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Original</th>
+                <th>Transcription</th>
+                <th>Parts of Speech</th>
+                <th>Translations</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="word in words | orderBy:'name'">
+                <td>{{ word._id }}</td>
+                <td>{{ word.name }}</td>
+                <td>{{ word.transcription }}</td>
+                <td>{{ word.speechPart }}</td>
+                <td>
+                    <ul ng-repeat="trans in word.translations">
+                        <li>{{trans}}</li>
+                    </ul>
+                </td>
+                <td>
+                    <a href="javascript:void(0)" ng-click="getUnit(unit)">edit</a> |
+                    <a href="javascript:void(0)" ng-click="deleteUnit(unit)">delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
