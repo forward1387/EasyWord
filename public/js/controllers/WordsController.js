@@ -51,4 +51,13 @@ angular.module('easyWordApp').controller('WordsController', ['$scope', 'WordsDat
                      5: "Preposition", 6: "Conjunction", 7: "Interjection"};
         return types[type];
     };
+
+    $scope.deleteWord = function(word) {
+        var ind = $scope.words.indexOf(word);
+        if (confirm('Are you sure you want to delete Word{id: ' + word._id + ', origin: '+word.name+'} from the database?')) {
+            WordsDataFactory.delete(word).success(function (response) {
+                $scope.words.splice(ind, 1);
+            });
+        }
+    };
 }]);

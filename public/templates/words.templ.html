@@ -112,9 +112,9 @@
                 <td>{{ word.transcription }}</td>
                 <td>{{ getSpeechPart(word.speechPart) }}</td>
                 <td>
-                    <ul ng-repeat="trans in word.translations">
-                        <li>{{trans}}</li>
-                    </ul>
+                    <span ng-repeat="trans in word.translations">
+                        {{trans}}<span ng-hide="$last">, </span>
+                    </span>
                 </td>
                 <td>
                     <div class="btn-group" role="group" aria-label="...">
@@ -122,7 +122,7 @@
                             <span class="glyphicon glyphicon-pencil"></span>
                         </button>
 
-                        <button class="btn btn-default" ng-click="">
+                        <button class="btn btn-default" ng-click="deleteWord(word)">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
                     </div>
