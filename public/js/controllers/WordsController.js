@@ -19,8 +19,36 @@ angular.module('easyWordApp').controller('WordsController', ['$scope', 'WordsDat
         }
     };
 
+    $scope.addEditWord = function(word)  {
+        if($scope.edit) {
+            WordsDataFactory.add(word).success(function (response) {
+                $scope.words.push(response);
+                $scope.newWord = {translations: ['']};
+            });
+        }else  {
+            WordsDataFactory.update(word).success(function(response){
+                $scope.newWord = {translations: ['']};
+                $scope.edit = true;
+                $scope.checked = false;
+            });
+        }
+    };
+
     $scope.reset = function() {
         $scope.checked = true;
+        $scope.edit = true;
         $scope.newWord = {translations: ['']};
+    };
+
+    $scope.editWord = function(word) {
+        $scope.newWord = word;
+        $scope.edit = false;
+        $scope.checked = true;
+    };
+
+    $scope.getSpeechPart = function(type) {
+        var types = {0: "Verb", 1: "Noun", 2: "Adjective", 3: "Adverb", 4: "Pronoun",
+                     5: "Preposition", 6: "Conjunction", 7: "Interjection"};
+        return types[type];
     };
 }]);
