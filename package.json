@@ -16,7 +16,8 @@
     "morgan": "latest",
     "nconf": "latest",
     "q": "latest",
-    "winston": "latest"
+    "winston": "latest",
+    "underscore": "latest"
   },
   "repository": {
     "type": "git",
