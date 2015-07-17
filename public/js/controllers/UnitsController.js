@@ -47,4 +47,11 @@ angular.module('easyWordApp').controller('UnitsController', ['$scope', 'UnitsDat
             });
         }
     };
+
+    $scope.showHideForm = function(state) {
+        $scope.reset();
+        if(state) {
+            $scope.checked = false;
+        }
+    };
 }]);

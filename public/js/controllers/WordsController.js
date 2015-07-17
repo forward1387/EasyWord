@@ -60,4 +60,11 @@ angular.module('easyWordApp').controller('WordsController', ['$scope', 'WordsDat
             });
         }
     };
+
+    $scope.showHideForm = function(state) {
+        $scope.reset();
+        if(state) {
+            $scope.checked = false;
+        }
+    };
 }]);

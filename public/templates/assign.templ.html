@@ -1,0 +1,17 @@
+<div class="panel panel-default animate-show">
+    <div class="panel-heading">
+        <h4>Assign Word <b>'{{word.name}}'</b> with id:{{word._id}} to the units:</h4>
+    </div>
+
+    <form class="form-horizontal simple-form" name="assignForm" role="form">
+        <fieldset>
+            <div ng-repeat="unt in units">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><input type="checkbox" value="">{{unt.title}}</label>
+
+                </div>
+            </div>
+        </fieldset>
+
+    </form>
+</div>

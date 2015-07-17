@@ -45,8 +45,8 @@
                 </td>
                 <td align="right">
                     <div class="pull-right">
-                        <button class="btn btn-success btn-add" ng-click="reset()">
-                            <span class="glyphicon glyphicon-plus"></span>
+                        <button class="btn" ng-class="checked ? 'btn-danger btn-remove' : 'btn-success btn-add'" type="button" ng-click="showHideForm(checked)">
+                            <span class="glyphicon" ng-class="checked ? 'glyphicon-minus' : 'glyphicon-plus'"></span>
                         </button>
                     </div>
                 </td>
