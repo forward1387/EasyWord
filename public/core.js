@@ -14,6 +14,9 @@ angular.module('easyWordApp').config(['$routeProvider', function($routeProvider)
       when('/words', {
         templateUrl: 'templates/words.templ.html',
         controller: 'WordsController'
+      }).when('/words/:id/assign', {
+        templateUrl: 'templates/assign.templ.html',
+        controller: 'AssignController'
       }).
       when('/units', {
         templateUrl: 'templates/units.templ.html',
