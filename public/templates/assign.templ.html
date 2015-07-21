@@ -7,8 +7,8 @@
         <fieldset>
             <div ng-repeat="unt in units">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><input type="checkbox" value="">{{unt.title}}</label>
-
+                    <label class="col-sm-2 control-label">
+                        <input ng-checked="isAssigned(unt)" type="checkbox" />{{unt.title}}</label>
                 </div>
             </div>
         </fieldset>

@@ -121,11 +121,9 @@
                         <button class="btn btn-default" ng-click="editWord(word)">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </button>
-
-                        <a class="btn btn-default" href="/#/words/{{word._id}}/assign">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </a>
-
+                            <button class="btn btn-default" ng-click="open('sm', word)">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
                         <button class="btn btn-default" ng-click="deleteWord(word)">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>

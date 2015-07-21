@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h3 class="modal-title">Assign <b>'{{word.name}}'</b> to units:</h3>
+</div>
+<div class="modal-body">
+    <form class="simple-form" name="assignForm" role="form">
+        <div class="form-group" ng-repeat="unt in pUnits | orderBy:'item.title'">
+            <label class="control-label">
+                <input ng-checked="unt.selected" type="checkbox" ng-model="unt.selected" ng-change="assign(unt)" />{{unt.item.title}}
+            </label>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-success" ng-click="ok()">Save</button>
+</div>

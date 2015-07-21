@@ -2,6 +2,6 @@ angular.module('easyWordApp')
     .directive('footer', function() {
     return {
         restrict: 'E',
-        templateUrl: 'js/directives/footer.templ.html'
+        templateUrl: 'templates/components/footer/footer.templ.html'
     };
 });
