@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on views, and components
 angular.module('easyWordApp', [
-  'ngRoute'
+  'ngRoute', 'angularSpinner'
 ]);
 
 angular.module('easyWordApp').config(['$routeProvider', function($routeProvider){
