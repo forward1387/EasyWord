@@ -9,6 +9,7 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-loader": "latest",
+    "angular-spinner": "latest",
     "angular-mocks": "latest",
     "angular-bootstrap": "latest",
     "html5-boilerplate": "latest",

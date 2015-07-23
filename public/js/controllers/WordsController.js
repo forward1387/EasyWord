@@ -5,8 +5,10 @@ angular.module('easyWordApp').controller('WordsController', ['$scope', 'WordsDat
     $scope.checked = false;
 
     function getInitData() {
+        $scope.startSpin();
         WordsDataFactory.list().success(function(response){
             $scope.words = response;
+            $scope.stopSpin();
         });
     }
     getInitData();
@@ -20,16 +22,19 @@ angular.module('easyWordApp').controller('WordsController', ['$scope', 'WordsDat
     };
 
     $scope.addEditWord = function(word)  {
+        $scope.startSpin();
         if($scope.edit) {
             WordsDataFactory.add(word).success(function (response) {
                 $scope.words.push(response);
                 $scope.newWord = {translations: ['']};
+                $scope.stopSpin();
             });
         }else  {
             WordsDataFactory.update(word).success(function(response){
                 $scope.newWord = {translations: ['']};
                 $scope.edit = true;
                 $scope.checked = false;
+                $scope.stopSpin();
             });
         }
     };
@@ -55,8 +60,10 @@ angular.module('easyWordApp').controller('WordsController', ['$scope', 'WordsDat
     $scope.deleteWord = function(word) {
         var ind = $scope.words.indexOf(word);
         if (confirm('Are you sure you want to delete Word{id: ' + word._id + ', origin: '+word.name+'} from the database?')) {
+            $scope.startSpin();
             WordsDataFactory.delete(word).success(function (response) {
                 $scope.words.splice(ind, 1);
+                $scope.stopSpin();
             });
         }
     };

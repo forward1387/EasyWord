@@ -11,6 +11,10 @@ angular.module('easyWordApp')
             {
                 'title': 'Units',
                 'link': '/units'
+            },
+            {
+                'title': 'Training',
+                'link': '/training'
             }
         ];
 

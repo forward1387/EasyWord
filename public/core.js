@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('easyWordApp', [
   'ngRoute', 'ui.bootstrap'
+   'angularSpinner'
 ]);
 
 angular.module('easyWordApp').config(['$routeProvider', function($routeProvider){
@@ -25,6 +26,9 @@ angular.module('easyWordApp').config(['$routeProvider', function($routeProvider)
       when('/login', {
         templateUrl: 'templates/login.templ.html',
         controller: ''
+      }).when('/training', {
+          templateUrl: 'templates/training/main.templ.html',
+          controller: ''
       }).
       otherwise({redirectTo: '/home'});
 }]);
