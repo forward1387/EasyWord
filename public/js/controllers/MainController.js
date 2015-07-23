@@ -1,4 +1,5 @@
-angular.module('easyWordApp').controller('MainController',['$scope', 'usSpinnerService', '$rootScope', function($scope, usSpinnerService, $rootScope){
+angular.module('easyWordApp').controller('MainController',['$scope', 'usSpinnerService', '$rootScope',
+    function($scope, usSpinnerService, $rootScope){
     $scope.startcounter = 0;
     $scope.startSpin = function() {
         if (!$scope.spinneractive) {
