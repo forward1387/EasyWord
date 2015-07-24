@@ -66,7 +66,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="unit in units| orderBy:'title'">
-            <td>{{ $index }}</td>
+            <td>{{ $index + 1 }}</td>
             <td>{{ unit.title }}</td>
             <td>{{ unit.description }}</td>
             <td>

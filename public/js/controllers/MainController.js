@@ -1,5 +1,13 @@
-angular.module('easyWordApp').controller('MainController',['$scope', 'usSpinnerService', '$rootScope',
-    function($scope, usSpinnerService, $rootScope){
+angular.module('easyWordApp').controller('MainController',['$scope', 'usSpinnerService', '$rootScope', '$modal', '$log', 'UnitsDataFactory',
+    function($scope, usSpinnerService, $rootScope, $modal, $log, UnitsDataFactory){
+    function initData(){
+        UnitsDataFactory.list().success(function(response){
+            $scope.units = response;
+        });
+    }
+
+    initData();
+
     $scope.startcounter = 0;
     $scope.startSpin = function() {
         if (!$scope.spinneractive) {
@@ -7,8 +15,6 @@ angular.module('easyWordApp').controller('MainController',['$scope', 'usSpinnerS
             $scope.startcounter++;
         }
     };
-angular.module('easyWordApp').controller('MainController', function($scope, $modal, $log, UnitsDataFactory){
-    $scope.items = ['item1', 'item2', 'item3'];
 
     $scope.stopSpin = function() {
         if ($scope.spinneractive) {
@@ -24,23 +30,15 @@ angular.module('easyWordApp').controller('MainController', function($scope, $mod
     $rootScope.$on('us-spinner:stop', function(event, key) {
         $scope.spinneractive = false;
     });
-}]);
+
     $scope.animationsEnabled = true;
-
-    function initData(){
-        UnitsDataFactory.list().success(function(response){
-            $scope.units = response;
-        });
-    }
-
-    initData();
 
     $scope.open = function (size, word) {
 
         var modalInstance = $modal.open({
             animation: $scope.animationsEnabled,
             templateUrl: '../../templates/components/dialogs/assign.unit.html',
-            controller: 'ModalInstanceCtrl',
+            controller: 'ModalInstanceController',
             size: size,
             resolve: {
                 word: function () {
@@ -63,4 +61,4 @@ angular.module('easyWordApp').controller('MainController', function($scope, $mod
     $scope.toggleAnimation = function () {
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
-});
+}]);
