@@ -94,7 +94,7 @@
         </table>
     </div>
 
-    <table class="table table-striped table-bordered">
+    <table st-table="words" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>#</th>
@@ -131,5 +131,12 @@
                 </td>
             </tr>
         </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-center">
+                <div st-items-by-page="10" st-pagination="" st-template="templates/components/pagination/pagination.templ.html"></div>
+            </td>
+        </tr>
+        </tfoot>
     </table>
 </div>

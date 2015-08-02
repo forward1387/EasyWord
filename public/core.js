@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on views, and components
 angular.module('easyWordApp', [
-  'ngRoute', 'ui.bootstrap', 'angularSpinner'
+  'ngRoute', 'ui.bootstrap', 'angularSpinner', 'smart-table'
 ]);
 
 angular.module('easyWordApp').config(['$routeProvider', function($routeProvider){

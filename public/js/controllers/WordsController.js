@@ -74,4 +74,13 @@ angular.module('easyWordApp').controller('WordsController', ['$scope', 'WordsDat
             $scope.checked = false;
         }
     };
-}]);
+}]).directive('stRatio',function(){
+    return {
+        link:function(scope, element, attr){
+            var ratio=+(attr.stRatio);
+
+            element.css('width',ratio+'%');
+
+        }
+    };
+});

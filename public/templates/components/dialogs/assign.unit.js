@@ -1,4 +1,8 @@
-angular.module('easyWordApp').controller('ModalInstanceController', function ($scope, $modalInstance, word, units, WordsDataFactory) {
+angular.module('easyWordApp').controller('ModalInstanceController', function ($scope,
+                                                                              $modalInstance,
+                                                                              word,
+                                                                              units,
+                                                                              WordsDataFactory) {
 
     $scope.word = word;
     $scope.units = units;

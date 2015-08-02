@@ -8,11 +8,9 @@ angular.module('easyWordApp').controller('MainController',['$scope', 'usSpinnerS
 
     initData();
 
-    $scope.startcounter = 0;
     $scope.startSpin = function() {
         if (!$scope.spinneractive) {
             usSpinnerService.spin('spinner-1');
-            $scope.startcounter++;
         }
     };
 

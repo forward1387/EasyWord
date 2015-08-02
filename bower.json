@@ -12,6 +12,7 @@
     "angular-spinner": "latest",
     "angular-mocks": "latest",
     "angular-bootstrap": "latest",
+    "angular-smart-table": "latest",
     "html5-boilerplate": "latest",
     "bootstrap": "latest",
     "underscore": "latest"
